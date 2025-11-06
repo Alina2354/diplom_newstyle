@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный Кабинет - Ателье "Новый Стиль"</title>
+    <link rel="stylesheet" href="/frontend/static/style.css"> <!-- Ваш основной CSS файл -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <style>
+        /* Общие стили */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fdfbff; /* Очень светлый фон, с легким оттенком пурпурного */
+            color: #333;
+            line-height: 1.6;
+
+            /* СТИЛИ ДЛЯ STICKY FOOTER: */
+            display: flex; /* Делаем body флекс-контейнером */
+            flex-direction: column; /* Элементы будут располагаться по вертикали */
+            min-height: 100vh; /* Минимальная высота body - 100% высоты окна браузера */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Оболочка для основного контента */
+        .main-content-wrapper {
+            flex-grow: 1; /* Позволяет этому элементу занимать все доступное пространство, выталкивая футер вниз */
+            padding-bottom: 40px; /* Дополнительный отступ снизу перед футером, чтобы не было слишком плотно */
+        }
+
+        /* Стили для Header/Navbar */
+        header {
+            background: #000000;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 100px; /* Уменьшаем высоту логотипа */
+            width: auto;
+            max-width: 150px;
+            object-fit: contain;
+        }
+
+        .nav-links a {
+            color: #952083;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #cf6dca;
+        }
+
+        #logout-btn {
+            color: #dc3545; /* Красный цвет для кнопки выхода */
+            font-weight: bold;
+        }
+        #logout-btn:hover {
+            color: #c82333;
+        }
+
+
+        /* Общие стили для секции дашборда */
+        .dashboard-section {
+            padding-top: 40px; /* Отступ сверху для контента после шапки */
+        }
+
+        .dashboard-section h2 {
+            color: #b02d9d;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+        }
+
+        /* Стили для блока информации о профиле */
+        .dashboard-info {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 40px; /* Отступ после блока профиля */
+        }
+
+        .dashboard-info p {
+            margin-bottom: 15px;
+            color: #4a4a4a;
+        }
+
+        .profile-display {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin: 16px 0;
+        }
+
+        #profile-photo {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            background: #fff;
+            border: 1px solid #ddd;
+        }
+
+        #user-email strong {
+            font-size: 1.1rem;
+            color: #b02d9d;
+        }
+
+        #user-id, #user-status {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .message {
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .profile-actions {
+            max-width: 520px; /* Ограничение ширины для формы и кнопки */
+        }
+
+        #toggle-profile-form-btn {
+            background: #b02d9d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        #toggle-profile-form-btn:hover {
+            background-color: #b45e9f;
+        }
+
+        .profile-form {
+            background: rgba(131, 127, 131, 0.1); /* Более светлый и прозрачный фон */
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .profile-form label {
+            font-weight: bold;
+            color: #b02d9d;
+            margin-top: 5px;
+        }
+
+        .profile-form input[type="text"],
+        .profile-form input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .file-upload-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .file-upload-group input[type="file"] {
+            flex-grow: 1;
+        }
+
+        .profile-form button {
+            background: #b02d9d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        .profile-form button:hover {
+            background-color: #b664a4;
+        }
+
+        .profile-form .form-buttons {
+            margin-top: 15px;
+            text-align: right;
+        }
+
+        /* Секция "Мои заявки" */
+        .dashboard-orders {
+            margin: 35px 0;
+            background-color: #fff; /* Фон для всей секции */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Мягкая тень */
+            overflow: hidden; /* Важно для скругления углов таблицы */
+        }
+
+        .dashboard-orders h3 {
+            color: #b02d9d;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+
+        .orders-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #f8f4fe; /* Светлый фон таблицы */
+            border-radius: 8px; /* Скругление углов таблицы */
+            overflow: hidden; /* Важно, чтобы содержимое не выходило за скругленные углы */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .orders-table thead tr {
+            background: #e9e1fe; /* Фон заголовка таблицы */
+            color: #b02d9d; /* Цвет текста заголовка */
+        }
+
+        .orders-table th,
+        .orders-table td {
+            padding: 12px 15px; /* Увеличенный отступ */
+            border: 1px solid #dcdcdc; /* Тонкая граница */
+            text-align: left;
+        }
+
+        .orders-table th {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        .orders-table tbody tr:nth-child(even) {
+            background-color: #fcfaff; /* Чередующийся фон для строк */
+        }
+
+        /* Секция с карточками (Связаться с нами) */
+        .dashboard-sections {
+            display: flex;
+            gap: 20px; /* Расстояние между карточками, если их будет несколько */
+            justify-content: center; /* Центрирование карточки */
+            margin-top: 40px;
+            margin-bottom: 60px; /* Отступ снизу для последней секции перед футером */
+        }
+
+        .dashboard-section-card {
+            background: #e9e1fe; /* Фон карточки */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Выразительная тень */
+            text-align: center;
+            max-width: 400px; /* Ограничение ширины карточки */
+            flex-grow: 1; /* Позволяет карточке растягиваться */
+        }
+
+        .dashboard-section-card h3 {
+            color: #b02d9d;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.6em;
+        }
+
+        .dashboard-section-card p {
+            color: #4a4a4a;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .dashboard-section-card a {
+            color: #b02d9d;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #f8f4fe; /* Фон для кнопки/ссылки */
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .dashboard-section-card a:hover {
+            background-color: #f2a4e1; /* Изменение фона при наведении */
+        }
+
+        /* Футер */
+        footer {
+            background-color: #343a40; /* Темно-фиолетовый фон футера */
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 20px; /* Отступы по бокам для контейнера в футере */
+        }
+
+        footer .logo span {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        footer p {
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 1.5em;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #e9e1fe; /* Светлее при наведении */
+        }
+
+        /* Мобильная адаптивность */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .nav-links {
+                margin-top: 10px;
+            }
+            .nav-links a {
+                margin: 0 10px;
+            }
+            .dashboard-section h2 {
+                font-size: 1.8em;
+            }
+            .dashboard-orders,
+            .dashboard-section-card,
+            .dashboard-info {
+                padding: 15px;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+            .dashboard-orders h3 {
+                font-size: 1.5em;
+            }
+            .orders-table th,
+            .orders-table td {
+                padding: 8px 10px;
+                font-size: 0.85em;
+            }
+            .dashboard-sections {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            .dashboard-section-card {
+                width: 90%; /* Шире на мобильных */
+                max-width: none;
+            }
+            .profile-display {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            #profile-photo {
+                width: 100px;
+                height: 100px;
+            }
+            .file-upload-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .file-upload-group input[type="file"] {
+                width: 100%;
+            }
+            footer .logo span {
+                font-size: 1.5em;
+            }
+        }
+
+    </style>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="/frontend/templates/index.html">
+                        <img src="/images/logo.PNG" alt="Ателье Новый Стиль">
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="/frontend/templates/base.html">Главная</a>
+                    <a href="/frontend/templates/dashboard.html">Личный Кабинет</a>
+                    <a href="#" id="logout-btn">Выход</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content-wrapper">
+        <section class="dashboard-section"> <!-- Изменен класс, чтобы избежать конфликта с .background-with-buttons, если он для другого фона -->
+            <div class="container">
+                <h2>Добро пожаловать в Личный Кабинет!</h2>
+                <p>Здесь вы можете управлять своими заказами, просматривать информацию о профиле и многое другое.</p>
+
+                <div class="dashboard-info">
+
+                    
+                    <!-- Этот блок теперь ПЕРВЫЙ: кнопка "Изменить профиль" и форма -->
+                   
+
+                    <!-- Этот блок теперь ВТОРОЙ: информация о профиле и фото -->
+                    <div class="profile-display">
+                        <img id="profile-photo" src="/images/logo.PNG" alt="Фото профиля">
+                        <div class="profile-actions">
+                            <form id="profileForm" class="profile-form" style="display:none;">
+                                <label for="pf-name">Имя</label>
+                                <input id="pf-name" type="text" placeholder="Ваше имя" />
+                                <label for="pf-phone">Номер телефона</label>
+                                <input id="pf-phone" type="text" placeholder="+7..." />
+                                <label for="pf-age">Возраст</label>
+                                <input id="pf-age" type="number" min="0" max="120" placeholder="Возраст" />
+                                <div class="file-upload-group">
+                                    <input id="pf-photo" type="file" accept="image/png,image/jpeg" />   <button id="pf-upload-btn" type="button">Загрузить фото</button>
+                                </div>
+                                <div class="form-buttons">
+                                    <button type="submit">Сохранить профиль</button>
+                                </div>
+                            </form>
+                            <button id="toggle-profile-form-btn" type="button">
+                                <span id="toggle-form-text">Изменить профиль</span>
+                            </button>
+                        </div>
+                        <div>
+                            <p id="user-email"><strong>Загрузка...</strong></p>
+                            <p id="user-id">Загрузка...</p>
+                            <p id="user-status">Загрузка...</p>
+                            <div id="success-message" class="message success" style="display:none;"></div>
+                            <div id="error-message" class="message error" style="display:none;"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="dashboard-orders">
+                    <h3>Мои заявки</h3>
+                    <table class="orders-table">
+                    <thead>
+                        <tr>
+                        <th>Название</th>
+                        <th>Дата</th>
+                        <th>Телефон</th>
+                        <th>Статус</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-orders-table-body">
+                        <!-- Данные загружаются динамически -->
+                    </tbody>
+                    </table>
+                </div>
+
+                <div class="dashboard-sections">
+                    <div class="dashboard-section-card">
+                        <h3>Связаться с нами</h3>
+                        <p>Быстрая связь с мастерами ателье по вашим вопросам.</p>
+                        <a href="https://t.me/AlinaAkunishnikova">Написать сообщение</a>
+                    </div>
+                </div>
+            
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <span>ателье "Новый стиль"</span>
+                </div>
+                <p>Портал для клиентов &copy; 2025. Все права защищены.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="/frontend/templates/auth.js"></script>
+    <script src="/frontend/templates/dashboard.js"></script>
+</body>
+</html>

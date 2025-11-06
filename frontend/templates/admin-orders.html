@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ — Заказы</title>
+    <link rel="stylesheet" href="/frontend/static/style.css">
+</head>
+<body>
+<header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="/images/logo.PNG" alt="A beautiful landscape" width="200" height="100">
+
+                </div>
+                <div class="nav-links">
+                    <a href="/frontend/templates/admin-costumes.html">Костюмы</a>
+                    <a href="/frontend/templates/admin-orders.html">Заказы</a>
+                    <a href="/frontend/templates/base.html">Сайт</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+<section class="background-with-buttons" style="height:auto; padding:30px 0; background:none;">
+    <div class="container">
+        <h2 style="margin:10px 0;">Все заказы</h2>
+
+        <div id="error-message" style="display:none;"></div>
+        <div id="success-message" style="display:none;"></div>
+
+        <div style="margin:10px 0; display:flex; gap:10px; align-items:center;">
+            <label>Фильтр по статусу:</label>
+            <select id="statusFilter">
+                <option value="">Все</option>
+                <option value="новая">новая</option>
+                <option value="в обработке">в обработке</option>
+                <option value="завершена">завершена</option>
+            </select>
+            <button id="reloadBtn">Обновить</button>
+        </div>
+
+        <table style="width:100%; border-collapse:collapse; background:#fff;">
+            <thead>
+                <tr style="background:#eee;">
+                    <th style="padding:8px; border:1px solid #ccc;">ID</th>
+                    <th style="padding:8px; border:1px solid #ccc;">Пользователь (email)</th>
+                    <th style="padding:8px; border:1px solid #ccc;">Название</th>
+                    <th style="padding:8px; border:1px solid #ccc;">Телефон</th>
+                    <th style="padding:8px; border:1px solid #ccc;">Костюм</th>
+                    <th style="padding:8px; border:1px solid #ccc;">Дата</th>
+                    <th style="padding:8px; border:1px solid #ccc;">Статус</th>
+                    <th style="padding:8px; border:1px solid #ccc;">Действия</th>
+                </tr>
+            </thead>
+            <tbody id="ordersBody"></tbody>
+        </table>
+    </div>
+</section>
+<footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <span>ателье "Новый стиль"</span>
+                </div>
+                <p>Портал для клиентов &copy; 2025. Все права защищены.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script src="/frontend/templates/auth.js"></script>
+<script src="/frontend/templates/admin-orders.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

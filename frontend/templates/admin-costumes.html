@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ — Костюмы</title>
+    <link rel="stylesheet" href="/frontend/static/style.css">
+</head>
+<body>
+    <style>
+
+        /* --- Секция "Управление костюмами" --- */
+        .background-with-buttons {
+            flex-grow: 1;
+            padding: 30px 0; /* Keep inline style override */
+            background: none;
+            /* ИЗМЕНЕНИЕ ЗДЕСЬ: Добавлен верхний отступ для всей секции */
+            margin-top: 250px; /* Отступ, чтобы секция начиналась ниже хедера */
+        }
+        #costumeForm {
+            background: #666262; /* Темно-серый фон формы */
+            color: white; /* Цвет текста внутри формы */
+            width: 100%;
+            max-width: 760px;
+            height: 670px;
+            margin: 50px auto 40px auto; /* Отступы и центрирование */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            padding-bottom: 50px; /* увеличь/уменьши по необходимости (например 50–100px) */
+  /* Отодвигаем последующий контент (таблицу) вниз, чтобы кнопки не налезали */
+            margin-bottom: 120px;
+        }
+
+    </style>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="/images/logo.PNG" alt="A beautiful landscape" width="200" height="100">
+
+                </div>
+                <div class="nav-links">
+                    <a href="/frontend/templates/admin-costumes.html">Костюмы</a>
+                    <a href="/frontend/templates/admin-orders.html">Заказы</a>
+                    <a href="/frontend/templates/base.html">Сайт</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="background-with-buttons" style="height:auto; padding:30px 0; background:none;">
+        <div class="container">
+            
+            <div id="error-message" style="display:none;"></div>
+            <div id="success-message" style="display:none;"></div>
+            <form id="costumeForm">
+                <h2 style="margin:10px 0;">Создать/обновить костюм</h2>
+                <input type="hidden" id="costumeId">
+
+                <div class="form-group">
+                    <label for="title">Название</label>
+                    <input type="text" id="title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Краткое описание</label>
+                    <input type="text" id="description">
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Цена (руб.)</label>
+                    <input type="number" id="price" min="0" step="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="image">Изображение</label>
+                    <input type="file" id="image" accept="image/png, image/jpeg">
+                </div>
+
+                <div class="form-group form-group-checkbox"> <!-- Добавлен класс form-group-checkbox для стилизации чекбокса -->
+                    <label for="available">Доступен</label>
+                    <input type="checkbox" id="available" checked>
+                </div>
+
+                
+
+                <div class="action-buttons"> <!-- Используем класс action-buttons для кнопок -->
+                    <button type="submit" id="saveBtn" class="save-button">Сохранить</button>
+                    <button type="button" id="resetBtn" class="clear-button">Очистить</button>
+                </div>
+            </form>
+
+            <div style="margin-top:20px;">
+                <h3>Список костюмов</h3>
+                <table style="width:100%; border-collapse:collapse; background:#fff;">
+                    <thead>
+                        <tr style="background:#eee;">
+                            <th style="padding:8px; border:1px solid #666262;">ID</th>
+                            <th style="padding:8px; border:1px solid #666262;">Превью</th>
+                            <th style="padding:8px; border:1px solid #666262;">Название</th>
+                            <th style="padding:8px; border:1px solid #666262;">Цена</th>
+                            <th style="padding:8px; border:1px solid #666262;">Доступен</th>
+                            <th style="padding:8px; border:1px solid #666262;">Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody id="costumesBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <span>ателье "Новый стиль"</span>
+                </div>
+                <p>Портал для клиентов &copy; 2025. Все права защищены.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/frontend/templates/auth.js"></script>
+    <script src="/frontend/templates/admin-costumes.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+<!--py -3 backend\create_superuser.py --email "AlinAkunish@mail.com" --password "qwerty1234"
+http://localhost:8080/frontend/templates/admin-costumes.html
+-->
+
+

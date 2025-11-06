@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная - Ателье "Новый Стиль"</title>
+    <link rel="stylesheet" href="/frontend/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="/images/logo.PNG" alt="Ателье Новый Стиль" width="200" height="100">
+                </div>
+                <div class="nav-links" id="navLinks">
+                    <!-- Будет динамически обновляться в зависимости от авторизации -->
+                    <a href="/frontend/templates/login.html">Войти</a>
+                    <a href="/frontend/templates/register.html">Зарегистрироваться</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Ателье "Новый Стиль"</h1>
+            <p>Ателье "Новый Стиль" - это ваш надежный партнер в мире моды и комфорта. Мы предлагаем полный спектр услуг по работе с одеждой и текстилем, а также уникальные возможности по персонализации различных предметов. Наше ателье находится в удобном месте по адресу: улица Гагарина, дом 36/1.</p>
+        </div>
+    </section>
+
+    
+    <section class="background-with-buttons">
+        <div class="container">
+            <div class="button-container" id="buttonContainer">
+                <!-- Будет динамически обновляться в зависимости от авторизации -->
+                <a href="/frontend/templates/login.html" class="button-link">Войти</a>
+                <a href="/frontend/templates/register.html" class="button-link register">Зарегистрироваться</a>
+            </div>
+        </div>
+    </section>
+    
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <span>ателье "Новый стиль"</span>
+                </div>
+                <p>Портал для клиентов &copy; 2025. Все права защищены.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+   
+    
+    <!-- Проверка авторизации -->
+    <script src="/frontend/templates/auth.js"></script>
+    
+</body>
+</html>

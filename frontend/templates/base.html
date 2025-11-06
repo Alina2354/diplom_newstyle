@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новый стиль</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #790866;
+            --primary-dark: #a0028b;
+            --secondary: #d586be;
+            --accent: #d31cb2;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --gray: #6c757d;
+            --border-radius: 12px;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #000000;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+        }
+
+        .logo {
+            display: flex;
+            align-items: left;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 2rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: black;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            margin-bottom: 4rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Features Section */
+        .features {
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+        }
+    
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .questions {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="/images/logo.PNG" alt="A beautiful landscape" width="200" height="100">
+
+                </div>
+                <div class="nav-links">
+                    <a href="#features">Меню</a>
+                    <a href="/frontend/templates/dashboard.html">Личный Кабинет</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main class="container1">
+        
+            <!-- Hero Section  -->
+            <section class="hero">
+                <div class="container">
+                    <h1>Ателье "Новый Стиль"</h1>
+                    <p>Ателье "Новый Стиль" - это ваш надежный партнер в мире моды и комфорта. Мы предлагаем полный спектр услуг по работе с одеждой и текстилем, а также уникальные возможности по персонализации различных предметов. Наше ателье находится в удобном месте по адресу: улица Гагарина, дом 36/1.</p>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features" id="features">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Наши услуги</h2>
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fa faq-grid"></i>
+                            </div>
+                            <a href="#" id="orderSewingBtn">
+                                <h3>Заказать пошив одежды</h3>
+                            </a>
+                            <p>Мы воплощаем в жизнь ваши самые смелые идеи и создаем уникальные наряды, идеально сидящие по вашей фигуре.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <a href="#" id="orderSewingBtn1">
+                                <h3>Заказать ремонт одежды</h3>
+                            </a>
+                            <p> Мы бережно относимся к вашим любимым вещам и готовы дать им вторую жизнь. Наши мастера выполняют ремонт любой сложности.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <a href="#" id="orderSewingBtn2">
+                                <h3>Заказать принт</h3>
+                            </a>
+                            <p>Создавайте оригинальные подарки, сувениры или брендированную продукцию с помощью качественной печати.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <a href="#"  id="orderSewingBtn3">
+                                <h3>Заказать вышивку</h3>
+                            </a>
+                            <p>Добавьте уникальности вашим вещам или создайте эксклюзивные подарки с помощью машинной вышивки.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <a href="/frontend/templates/costumes.html">
+                                <h3>Костюмы напрокат</h3>
+                            </a>
+                            <p>Аренда национальных и праздничных костюмов</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <a href="#">
+                                <h3>Услуги печати</h3>
+                            </a>
+                            <p>Распечатка фотографий и документов, сканы и ксерокопии</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        
+    </main>
+
+ 
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <span>ателье "Новый стиль"</span>
+                </div>
+                <p>Портал для клиентов &copy; 2025. Все права защищены.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно: Заказать пошив одежды -->
+    <div id="sewOrderModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center;">
+        <div style="background:#fff; width:95%; max-width:700px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.2); overflow:hidden;">
+            <div style="padding:16px 20px; background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color:#000; display:flex; align-items:center; justify-content:space-between;">
+                <h3 style="margin:0;">Заявка на пошив одежды</h3>
+                <button id="sewOrderClose" aria-label="Закрыть" style="background:transparent; border:none; font-size:22px; cursor:pointer; color:#000">×</button>
+            </div>
+            <form id="sewOrderForm0" style="padding:20px;" data-order-type="Пошив одежды">
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                    <div>
+                        <label for="sewDate0" style="display:block; margin-bottom:6px; color:#343a40;">Дата</label>
+                        <input id="sewDate0" name="date" type="date" required style="width:100%; padding:10px; border:1px solid #e0e0e0; border-radius:8px;">
+                    </div>
+                    <div>
+                        <label for="phoneNumber0" style="display:block; margin-bottom:6px; color:#343a40;">Телефон</label>
+                        <input id="phoneNumber0" name="phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="XXX-XXX-XXXX" required style="width:100%; padding:10px; border:1px solid #e0e0e0; border-radius:8px;">
+                    </div>
+
+
+                    <div style="grid-column:1 / -1;">
+                        <label for="sewMaterial0" style="display:block; margin-bottom:6px; color:#343a40;">Материал</label>
+                        <select id="sewMaterial0" name="material" required style="width:100%; padding:10px; border:1px solid #e0e0e0; border-radius:8px;">
+                            <option value="" disabled selected>Выберите материал</option>
+                            <option value="cotton">Хлопок</option>
+                            <option value="linen">Лён</option>
+                            <option value="wool">Шерсть</option>
+                            <option value="silk">Шёлк</option>
+                            <option value="synthetic">Синтетика</option>
+                            <option value="own">Свой материал (принесу)</option>
+                        </select>
+                    </div>
+                    <div style="grid-column:1 / -1;">
+                        <label for="sewPhoto0" style="display:block; margin-bottom:6px; color:#343a40;">Фото модели (эскиз, пример)</label>
+                        <input id="sewPhoto0" name="photo" type="file" accept="image/*" style="width:100%; padding:10px; border:1px solid #e0e0e0; border-radius:8px; background:#fff;">
+                        <small style="color:#6c757d;">Необязательно. JPG/PNG/WebP, до 10 МБ.</small>
+                        <div id="sewPhotoPreview0" style="margin-top:10px; display:none;">
+                            <img id="sewPhotoImg0" alt="Превью" style="max-width:160px; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+                        </div>
+                    </div>
+                    <div style="grid-column:1 / -1;">
+                        <label for="sewComment0" style="display:block; margin-bottom:6px; color:#343a40;">Комментарий</label>
+                        <textarea id="sewComment0" name="comment" rows="4" placeholder="Опишите пожелания, фасон, особенности фигуры и т.д." style="width:100%; padding:10px; border:1px solid #e0e0e0; border-radius:8px; resize:vertical;"></textarea>
+                    </div>
+                </div>
+                <div style="display:flex; gap:12px; justify-content:flex-end; margin-top:18px;">
+                    <button type="button" id="sewOrderCancel0" style="padding:10px 16px; border-radius:8px; border:1px solid #e0e0e0; background:#fff; cursor:pointer;">Отмена</button>
+                    <button type="submit" style="padding:10px 16px; border-radius:8px; border:none; background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color:#000; cursor:pointer;">Отправить заявку</button>
+                </div>
+                <div id="sewOrderMessage0" style="display:none; margin-top:12px; padding:10px; border-radius:8px;"></div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- Модальное окно: Заказать ремонт одежды -->
+     <div id="sewOrderModal1" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center;">
+        <div style="background:#fff; width:95%; max-width:700px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.2); overflow:hidden;">
+            <div style="padding:16px 20px; background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color:#000; display:flex; align-items:center; justify-content:space-between;">
+                <h3 style="margin:0;">Заявка на ремонт одежды</h3>
+                <button id="sewOrderClose" aria-label="Закрыть" style="background:transparent; border:none; font-size:22px; cursor:pointer; color:#000">×</button>
+            </div>
+            <form id="sewOrderForm1" style="padding:20px;" data-order-type="Ремонт одежды">
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                    <div>
+                        <label for="sewDate1" style="display:block; margin-bottom:6px; color:#343a40;">Дата</label>
+                        <input id="sewDate1" name="date" type="date" required style="width:100%; padding:10px; border:1px solid #e0e0e0; border-radius:8px;">
+                    </div>
+                    <div>
+                        <label for="phoneNumber1" style="display:block; margin-bottom:6px; color:#343a40;">Телефон</label>
+                        <input id="phoneNumber1" name="phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="XXX-XXX-XXXX" required style="width:100%; padding:10px; border:1px solid #e0e0e0; border-radius:8px;">
+                    </div>
+
+
+                    <div style="grid-column:1 / -1;">
+                        <label for="sewMaterial1" style="display:block; margin-bottom:6px; color:#343a40;">Материал</label>
+                        <select id="sewMaterial1" name="material" required style="width:100%; padding:10px; border:1px solid #e0e0e0; border-radius:8px;">
+                            <option value="" disabled selected>Выберите материал</option>
+                            <option value="cotton">Хлопок</option>
+                            <option value="linen">Лён</option>
+                            <option value="wool">Шерсть</option>
+                            <option value="silk">Шёлк</option>
+                            <option value="synthetic">Синтетика</option>
+                            <option value="own">Другой материал</option>
+                        </select>
+                    </div>
+                    <div style="grid-column:1 / -1;">
+                        <label for="sewComment1" style="display:block; margin-bottom:6px; color:#343a40;">Комментарий</label>
+                        <textarea id="sewComment1" name="comment" rows="4" placeholder="Опишите проблему, ваши пожелания и т.д." style="width:100%; padding:10px; border:1px solid #e0e0e0; border-radius:8px; resize:vertical;"></textarea>
+                    </div>
+                </div>
+                <div style="display:flex; gap:12px; justify-content:flex-end; margin-top:18px;">
+                    <button type="button" id="sewOrderCancel1" style="padding:10px 16px; border-radius:8px; border:1px solid #e0e0e0; background:#fff; cursor:pointer;">Отмена</button>
+                    <button type="submit" style="padding:10px 16px; border-radius:8px; border:none; background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color:#000; cursor:pointer;">Отправить заявку</button>
+                </div>
+                <div id="sewOrderMessage1" style="display:none; margin-top:12px; padding:10px; border-radius:8px;"></div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- Модальное окно: Заказать принт -->
+     <div id="sewOrderModal2" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center;">
+        <div style="background:#fff; width:95%; max-width:700px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.2); overflow:hidden;">
+            <div style="padding:16px 20px; background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color:#000; display:flex; align-items:center; justify-content:space-between;">
+                <h3 style="margin:0;">Заявка на принт</h3>
+                <button id="sewOrderClose" aria-label="Закрыть" style="background:transparent; border:none; font-size:22px; cursor:pointer; color:#000">×</button>
+            </div>
+            <form id="sewOrderForm2" style="padding:20px;" data-order-type="Принт">
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                    <div>
+                        <label for="sewDate2" style="display:block; margin-bottom:6px; color:#343a40;">Дата</label>
+                        <input id="sewDate2" name="date" type="date" required style="width:100%; padding:10px; border:1px solid #e0e0e0; border-radius:8px;">
+                    </div>
+                    <div>
+                        <label for="phoneNumber2" style="display:block; margin-bottom:6px; color:#343a40;">Телефон</label>
+                        <input id="phoneNumber2" name="phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="XXX-XXX-XXXX" required style="width:100%; padding:10px; border:1px solid #e0e0e0; border-radius:8px;">
+                    </div>
+
+
+                    <div style="grid-column:1 / -1;">
+                        <label for="sewMaterial2" style="display:block; margin-bottom:6px; color:#343a40;">Материал</label>
+                        <select id="sewMaterial2" name="material" required style="width:100%; padding:10px; border:1px solid #e0e0e0; border-radius:8px;">
+                            <option value="" disabled selected>Выберите предмет</option>
+                            <option value="mug">Кружка</option>
+                            <option value="Shopper">Шоппер</option>
+                            <option value="clothe">Предмет одежды</option>
+                            <option value="own">Другое</option>
+                        </select>
+                    </div>
+
+                    <div style="grid-column:1 / -1;">
+                        <label for="sewPhoto2" style="display:block; margin-bottom:6px; color:#343a40;">загрузи принт(эскиз, пример)</label>
+                        <input id="sewPhoto2" name="photo" type="file" accept="image/*" style="width:100%; padding:10px; border:1px solid #e0e0e0; border-radius:8px; background:#fff;">
+                        <small style="color:#6c757d;">Необязательно. JPG/PNG/WebP, до 10 МБ.</small>
+                        <div id="sewPhotoPreview2" style="margin-top:10px; display:none;">
+                            <img id="sewPhotoImg2" alt="Превью" style="max-width:160px; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+                        </div>
+                        
+                    </div>
+                    <div style="grid-column:1 / -1;">
+                        <label for="sewComment2" style="display:block; margin-bottom:6px; color:#343a40;">Комментарий</label>
+                        <textarea id="sewComment2" name="comment" rows="4" placeholder="Опишите ваши пожелания, идеи и материал" style="width:100%; padding:10px; border:1px solid #e0e0e0; border-radius:8px; resize:vertical;"></textarea>
+                    </div>
+                </div>
+                <div style="display:flex; gap:12px; justify-content:flex-end; margin-top:18px;">
+                    <button type="button" id="sewOrderCancel2" style="padding:10px 16px; border-radius:8px; border:1px solid #e0e0e0; background:#fff; cursor:pointer;">Отмена</button>
+                    <button type="submit" style="padding:10px 16px; border-radius:8px; border:none; background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color:#000; cursor:pointer;">Отправить заявку</button>
+                </div>
+                <div id="sewOrderMessage2" style="display:none; margin-top:12px; padding:10px; border-radius:8px;"></div>
+            </form>
+        </div>
+    </div>
+
+
+     <!-- Модальное окно: Заказать вышивку -->
+     <div id="sewOrderModal3" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center;">
+        <div style="background:#fff; width:95%; max-width:700px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.2); overflow:hidden;">
+            <div style="padding:16px 20px; background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color:#000; display:flex; align-items:center; justify-content:space-between;">
+                <h3 style="margin:0;">Заявка на вышивку</h3>
+                <button id="sewOrderClose" aria-label="Закрыть" style="background:transparent; border:none; font-size:22px; cursor:pointer; color:#000">×</button>
+            </div>
+            <form id="sewOrderForm3" style="padding:20px;" data-order-type="Вышивка">
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                    <div>
+                        <label for="sewDate3" style="display:block; margin-bottom:6px; color:#343a40;">Дата</label>
+                        <input id="sewDate3" name="date" type="date" required style="width:100%; padding:10px; border:1px solid #e0e0e0; border-radius:8px;">
+                    </div>
+                    <div>
+                        <label for="phoneNumber3" style="display:block; margin-bottom:6px; color:#343a40;">Телефон</label>
+                        <input id="phoneNumber3" name="phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="XXX-XXX-XXXX" required style="width:100%; padding:10px; border:1px solid #e0e0e0; border-radius:8px;">
+                    </div>
+
+
+                    <div style="grid-column:1 / -1;">
+                        <label for="sewMaterial3" style="display:block; margin-bottom:6px; color:#343a40;">Материал</label>
+                        <select id="sewMaterial3" name="material" required style="width:100%; padding:10px; border:1px solid #e0e0e0; border-radius:8px;">
+                            <option value="" disabled selected>Выберите материал</option>
+                            <option value="cotton">Хлопок</option>
+                            <option value="linen">Лён</option>
+                            <option value="wool">Шерсть</option>
+                            <option value="silk">Шёлк</option>
+                            <option value="synthetic">Синтетика</option>
+                            <option value="own">Другой материал</option>
+                        </select>
+                    </div>
+
+                    <div style="grid-column:1 / -1;">
+                        <label for="sewPhoto3" style="display:block; margin-bottom:6px; color:#343a40;">загрузи эскиз, пример</label>
+                        <input id="sewPhoto3" name="photo" type="file" accept="image/*" style="width:100%; padding:10px; border:1px solid #e0e0e0; border-radius:8px; background:#fff;">
+                        <small style="color:#6c757d;">Необязательно. JPG/PNG/WebP, до 10 МБ.</small>
+                        <div id="sewPhotoPreview3" style="margin-top:10px; display:none;">
+                            <img id="sewPhotoImg3" alt="Превью" style="max-width:160px; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+                        </div>
+                        
+                    </div>
+                    <div style="grid-column:1 / -1;">
+                        <label for="sewComment3" style="display:block; margin-bottom:6px; color:#343a40;">Комментарий</label>
+                        <textarea id="sewComment3" name="comment" rows="4" placeholder="Опишите ваши пожелания, идеи и материал" style="width:100%; padding:10px; border:1px solid #e0e0e0; border-radius:8px; resize:vertical;"></textarea>
+                    </div>
+                </div>
+                <div style="display:flex; gap:12px; justify-content:flex-end; margin-top:18px;">
+                    <button type="button" id="sewOrderCancel3" style="padding:10px 16px; border-radius:8px; border:1px solid #e0e0e0; background:#fff; cursor:pointer;">Отмена</button>
+                    <button type="submit" style="padding:10px 16px; border-radius:8px; border:none; background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color:#000; cursor:pointer;">Отправить заявку</button>
+                </div>
+                <div id="sewOrderMessage3" style="display:none; margin-top:12px; padding:10px; border-radius:8px;"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Чат-виджет -->
+    <script src="/frontend/templates/auth.js"></script>
+    <script src="/frontend/templates/order-forms.js"></script>
+    <script src="chat-widget.js"></script>
+
+    <script>
+        // Функция для автоматической отправки вопроса в чат
+        function askQuestion(question) {
+            // Находим поле ввода и кнопку отправки
+            const messageInput = document.getElementById('messageInput');
+            const sendButton = document.getElementById('sendButton');
+            
+            if (messageInput && sendButton) {
+                // Открываем чат, если он закрыт
+                const chatWindow = document.getElementById('chatWindow');
+                if (chatWindow && chatWindow.style.display === 'none') {
+                    // Имитируем клик по кнопке чата
+                    const chatButton = document.getElementById('chatButton');
+                    if (chatButton) chatButton.click();
+                }
+                
+                // Устанавливаем вопрос в поле ввода
+                messageInput.value = question;
+                
+                // Даем небольшой timeout для открытия чата
+                setTimeout(() => {
+                    // Имитируем клик по кнопке отправки
+                    sendButton.click();
+                }, 300);
+            } else {
+                alert('Чат временно недоступен. Пожалуйста, откройте чат вручную и задайте вопрос: ' + question);
+            }
+        }
+
+        // Плавная прокрутка для навигации
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Анимация появления элементов при скролле
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Наблюдаем за карточками и секциями
+        document.querySelectorAll('.feature-card, .faq-category, .questions').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+
+    <script>
+        (function() {
+            const openBtn = document.getElementById('orderSewingBtn');
+            const modal = document.getElementById('sewOrderModal');
+            const closeBtn = document.getElementById('sewOrderClose');
+            const cancelBtn = document.getElementById('sewOrderCancel0');
+            // Форма sewOrderForm0 обрабатывается в order-forms.js
+            const photoInput = document.getElementById('sewPhoto0');
+            const photoPreview = document.getElementById('sewPhotoPreview0');
+            const photoImg = document.getElementById('sewPhotoImg0');
+
+            function openModal() {
+                if (modal) modal.style.display = 'flex';
+            }
+            function closeModal() {
+                if (modal) modal.style.display = 'none';
+                const form2 = document.getElementById('sewOrderForm2');
+                if (form2) form2.reset();
+                if (photoPreview) photoPreview.style.display = 'none';
+            }
+
+            if (openBtn) openBtn.addEventListener('click', function(e) { e.preventDefault(); openModal(); });
+            if (closeBtn) closeBtn.addEventListener('click', closeModal);
+            if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
+            if (modal) modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
+
+            if (photoInput) {
+                photoInput.addEventListener('change', function() {
+                    const file = this.files && this.files[0];
+                    if (file) {
+                        const url = URL.createObjectURL(file);
+                        photoImg.src = url;
+                        photoPreview.style.display = 'block';
+                    } else {
+                        photoPreview.style.display = 'none';
+                    }
+                });
+            }
+
+            
+        })();
+
+
+
+
+        (function() {
+            const openBtn = document.getElementById('orderSewingBtn1'); 
+            const modal = document.getElementById('sewOrderModal1');   
+            const closeBtn = document.getElementById('sewOrderClose');
+            const cancelBtn = document.getElementById('sewOrderCancel1');
+            // Форма sewOrderForm1 обрабатывается в order-forms.js
+            const messageBox = document.getElementById('sewOrderMessage1');
+
+            function openModal() {
+                if (modal) modal.style.display = 'flex';
+            }
+            function closeModal() {
+                if (modal) modal.style.display = 'none';
+                if (form) form.reset();
+                if (messageBox) messageBox.style.display = 'none';
+            }
+
+            if (openBtn) openBtn.addEventListener('click', function(e) { e.preventDefault(); openModal(); });
+            if (closeBtn) closeBtn.addEventListener('click', closeModal);
+            if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
+            if (modal) modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
+
+            
+        })();
+
+
+
+        (function() {
+            const openBtn = document.getElementById('orderSewingBtn2');
+            const modal = document.getElementById('sewOrderModal2');
+            const closeBtn = document.getElementById('sewOrderClose');
+            const cancelBtn = document.getElementById('sewOrderCancel2');
+            // Форма обрабатывается в order-forms.js
+            const messageBox = document.getElementById('sewOrderMessage2');
+            const photoInput = document.getElementById('sewPhoto2');
+            const photoPreview = document.getElementById('sewPhotoPreview2');
+            const photoImg = document.getElementById('sewPhotoImg2');
+
+            function openModal() {
+                if (modal) modal.style.display = 'flex';
+            }
+            function closeModal() {
+                if (modal) modal.style.display = 'none';
+                const form2 = document.getElementById('sewOrderForm2');
+                if (form2) form2.reset();
+                if (photoPreview) photoPreview.style.display = 'none';
+            }
+
+            if (openBtn) openBtn.addEventListener('click', function(e) { e.preventDefault(); openModal(); });
+            if (closeBtn) closeBtn.addEventListener('click', closeModal);
+            if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
+            if (modal) modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
+
+            if (photoInput) {
+                photoInput.addEventListener('change', function() {
+                    const file = this.files && this.files[0];
+                    if (file) {
+                        const url = URL.createObjectURL(file);
+                        photoImg.src = url;
+                        photoPreview.style.display = 'block';
+                    } else {
+                        photoPreview.style.display = 'none';
+                    }
+                });
+            }
+
+            
+        })();
+
+
+
+
+
+        (function() {
+            const openBtn = document.getElementById('orderSewingBtn3');
+            const modal = document.getElementById('sewOrderModal3');
+            const closeBtn = document.getElementById('sewOrderClose');
+            const cancelBtn = document.getElementById('sewOrderCancel3');
+            // Форма sewOrderForm3 обрабатывается в order-forms.js
+            const photoInput = document.getElementById('sewPhoto3');
+            const photoPreview = document.getElementById('sewPhotoPreview3');
+            const photoImg = document.getElementById('sewPhotoImg3');
+
+            function openModal() {
+                if (modal) modal.style.display = 'flex';
+            }
+            function closeModal() {
+                if (modal) modal.style.display = 'none';
+                const form3 = document.getElementById('sewOrderForm3');
+                if (form3) form3.reset();
+                if (photoPreview) photoPreview.style.display = 'none';
+            }
+
+            if (openBtn) openBtn.addEventListener('click', function(e) { e.preventDefault(); openModal(); });
+            if (closeBtn) closeBtn.addEventListener('click', closeModal);
+            if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
+            if (modal) modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
+
+            if (photoInput) {
+                photoInput.addEventListener('change', function() {
+                    const file = this.files && this.files[0];
+                    if (file) {
+                        const url = URL.createObjectURL(file);
+                        if (photoImg) photoImg.src = url;
+                        if (photoPreview) photoPreview.style.display = 'block';
+                    } else {
+                        if (photoPreview) photoPreview.style.display = 'none';
+                    }
+                });
+            }
+
+            
+        })();
+    </script>
+
+</body>
+</html>

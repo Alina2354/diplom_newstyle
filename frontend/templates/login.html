@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход - Ателье "Новый Стиль"</title>
+    <link rel="stylesheet" href="/frontend/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="/frontend/templates/index.html">
+                        <img src="/images/logo.PNG" alt="Ателье Новый Стиль" width="200" height="100">
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="/frontend/templates/register.html">Зарегистрироваться</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="background-with-buttons">
+        <div class="container">
+            <div class="button-container">
+                <div id="auth-notice" style="display:none; background: rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.25); padding:10px; border-radius:6px; margin-bottom:12px;"></div>
+                <form id="loginForm">
+                    <h3>Вход в личный кабинет</h3>
+
+                    <div id="error-message" style="display: none;"></div>
+                    <div id="success-message" style="display: none;"></div>
+
+                    <label for="username">Email (или логин):</label>
+                    <input type="email" placeholder="your@email.com" id="username" required>
+
+                    <label for="password">Пароль:</label>
+                    <input type="password" placeholder="Введите пароль" id="password" required>
+
+                    <button type="submit">Войти</button>
+                    <div class="white"></div>
+
+                    <a href="/frontend/templates/register.html">
+                        <h4>Нет аккаунта? Зарегистрироваться</h4>
+                    </a>
+                    <a href="/frontend/templates/index.html" style="margin-top: 10px;">
+                        <h4 style="color: rgba(255,255,255,0.8);">← Вернуться на главную</h4>
+                    </a>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <span>ателье "Новый стиль"</span>
+                </div>
+                <p>Портал для клиентов &copy; 2025. Все права защищены.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/frontend/templates/auth.js"></script>
+    <script src="/frontend/templates/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+sqlalchemy
+passlib[bcrypt]
+python-jose[cryptography]
+python-multipart
+Jinja2
+python-dotenv
+google-generativeai
+fastapi-users[sqlalchemy]
+aiosqlite
+packaging
+streamlit
